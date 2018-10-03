@@ -14,7 +14,7 @@ public class SpringDataMongoDBMain {
 
 	public static final String DB_NAME = "mongoDBsAssign";
 	public static final String Employee_COLLECTION = "Employee";
-	public static final String MONGO_HOST = "localhost";
+	public static final String MONGO_HOST = "35.177.39.42";
 	public static final int MONGO_PORT = 27017;
 
 	public static void main(String[] args) {
