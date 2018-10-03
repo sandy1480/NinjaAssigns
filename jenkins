@@ -1,6 +1,6 @@
 node {
    stage('SCM Checkout') {
-       git 'https://github.com/girisheduru/NinjaAssigns.git'
+       git 'https://github.com/sandy1480/NinjaAssigns.git'
        }
    stage('Compile-Package') {
        def mvnHome =  tool name: 'MavenNinja', type: 'maven'
