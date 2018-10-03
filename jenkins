@@ -1,0 +1,19 @@
+node {
+   stage('SCM Checkout') {
+       git 'https://github.com/girisheduru/NinjaAssigns.git'
+       }
+   stage('Compile-Package') {
+       def mvnHome =  tool name: 'MavenNinja', type: 'maven'
+       sh "${mvnHome}/bin/mvn package"
+       }
+   stage('Deploy to Tomcat'){
+       sshagent(['sandy1480']) {
+         sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@35.178.186.148:/opt/tomcat8/EmpDetails/'
+           }
+       } 
+   stage('Email Notification'){
+      mail bcc: '', body: '''Hi Deployed to Tomcat Server
+      Thanks
+      Sandeep''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'sandy1480@gmail.com'
+       }
+   }
