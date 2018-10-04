@@ -12,6 +12,16 @@ pipeline {
         
     }
     
+    stage ('Deploy to Tomcat'){
+        steps {
+             sshagent(['sandy1480']) {
+                 sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@35.178.186.148:8090/EmpDetails/'
+                 }
+         }
+     }
+
+
+    
 }
 
 }
